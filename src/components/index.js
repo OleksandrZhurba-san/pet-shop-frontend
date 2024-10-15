@@ -1,4 +1,5 @@
 import Navbar from "./navbar";
-import Categories from "./categories";
+import CategoriesList from "./categoriesList";
+import DiscountForm from "./discount";
 
-export { Navbar, Categories };
+export { Navbar, CategoriesList, DiscountForm };
