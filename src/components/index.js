@@ -6,8 +6,10 @@ import InstaIcon from "./icons/InstaIcon";
 import ProductsList from "./productsList";
 import Separator from "./separator";
 import Banner from "./banner";
+import BreadCrumbs from "./breadcrumbs";
 
 export {
+  BreadCrumbs,
   Banner,
   Separator,
   Navbar,
