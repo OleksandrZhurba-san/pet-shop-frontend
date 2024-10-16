@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import "./App.css";
-import { Navbar } from "./components";
+import { Footer, Navbar } from "./components";
 import { Home, Categories } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
@@ -20,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
+      <Footer />
     </Box>
   );
 }
