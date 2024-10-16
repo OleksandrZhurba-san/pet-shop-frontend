@@ -1,5 +1,6 @@
 import {
   Box,
+  Badge,
   Button,
   Card,
   CardActionArea,
@@ -16,9 +17,7 @@ export default function ProductCard({
   title,
   price,
   discont_price,
-  description,
   image,
-  categoryId,
 }) {
   const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
@@ -41,6 +40,17 @@ export default function ProductCard({
       backgroundColor: "black",
     },
   };
+  const badgeStyle = {
+    "& .MuiBadge-badge": {
+      fontSize: "20px",
+      backgroundColor: "#0D50FF",
+      padding: "4px 8px",
+      borderRadius: "6px",
+      top: 28,
+      right: 38,
+    },
+  };
+
   return (
     <Card
       onClick={() => navigate(`/products/${id}`)}
@@ -49,12 +59,28 @@ export default function ProductCard({
       onMouseLeave={() => setHovered(false)}
     >
       <CardActionArea>
-        <CardMedia
-          component="img"
-          image={baseURL + image}
-          alt={title}
-          sx={{ objectFit: "cover", width: "316px", height: "284px" }}
-        ></CardMedia>
+        <Box sx={{ display: "flex" }}>
+          <CardMedia
+            component="img"
+            image={baseURL + image}
+            alt={title}
+            sx={{ objectFit: "cover", width: "316px", height: "284px" }}
+          />
+
+          <Badge
+            color="primary"
+            overlap="rectangular"
+            badgeContent={
+              discont_price &&
+              `-${Math.ceil(((price - discont_price) / price) * 100)}%`
+            }
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            sx={badgeStyle}
+          />
+        </Box>
         <CardContent sx={{ textAlign: "start" }}>
           <Typography
             sx={{

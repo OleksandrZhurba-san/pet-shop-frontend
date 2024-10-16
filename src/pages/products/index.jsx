@@ -40,8 +40,7 @@ export default function Products() {
       <Stack>
         <Breadcrumbs separator={<Separator />}>{breadcrumbs}</Breadcrumbs>
       </Stack>
-      <Typography>All Products</Typography>
-      <ProductsList />
+      <ProductsList page="products" />
     </Box>
   );
 }

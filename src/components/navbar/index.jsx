@@ -8,7 +8,7 @@ export default function Navbar() {
     bgcolor: "white",
     height: 128,
     justifyContent: "center",
-    boxShadow: "none",
+    marginBottom: "40px",
   };
   const toolBarStyle = {
     maxWidth: 1400,
@@ -23,7 +23,8 @@ export default function Navbar() {
     gap: "4",
   };
   const navbarButtonsStyle = {
-    fontSize: "16px",
+    fontSize: "20px",
+    fontWeight: "500",
     color: "black",
     textTransform: "none",
   };
@@ -45,6 +46,7 @@ export default function Navbar() {
             <LogoIcon />
           </NavLink>
         </IconButton>
+
         <Box sx={navbarButtonsBoxStyle}>
           <NavLink to="/">
             <Button sx={navbarButtonsStyle}>Main Page</Button>

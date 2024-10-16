@@ -38,7 +38,11 @@ export default function Category() {
       Main page
     </Typography>,
 
-    <Typography sx={navLinkStyle} key="2">
+    <Typography
+      sx={navLinkStyle}
+      onClick={() => navigate("/categories")}
+      key="2"
+    >
       Categories
     </Typography>,
     <Typography sx={navLinkStyleActive} key="3">
@@ -50,7 +54,7 @@ export default function Category() {
       <Stack>
         <Breadcrumbs separator={<Separator />}>{breadcrumbs}</Breadcrumbs>
       </Stack>
-      <ProductsList id={id} />
+      <ProductsList page={categoryName} id={id} />
     </Box>
   );
 }

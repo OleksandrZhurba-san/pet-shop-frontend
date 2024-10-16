@@ -1,10 +1,7 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { getAllCategories } from "../../redux/slices/categoriesSlice";
 import CategoryCard from "../categoryCard";
-import { Box, Typography, Button, Stack, Breadcrumbs } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Separator from "../separator";
 
 export default function CategoriesList({ page }) {
   const {
@@ -14,38 +11,6 @@ export default function CategoriesList({ page }) {
     message,
   } = useSelector((state) => state.categories);
   const navigate = useNavigate();
-  const navLinkStyle = {
-    padding: "8px 16px",
-    borderRadius: "8px",
-    border: "1px solid #DDDDDD",
-    textDecoration: "none",
-    color: "#8B8B8B",
-    fontSize: "16px",
-    fontWeight: 500,
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: "#F1F3F4",
-    },
-  };
-  const navLinkStyleActive = {
-    padding: "8px 16px",
-    borderRadius: "8px",
-    border: "1px solid #DDDDDD",
-    textDecoration: "none",
-    color: "black",
-    fontSize: "16px",
-    fontWeight: 500,
-  };
-
-  const breadcrumbs = [
-    <Typography sx={navLinkStyle} key="1" onClick={() => navigate("/")}>
-      Main page
-    </Typography>,
-
-    <Typography sx={navLinkStyleActive} key="2">
-      Categories
-    </Typography>,
-  ];
 
   if (isLoading) {
     return <>Loading..</>;
@@ -74,7 +39,7 @@ export default function CategoriesList({ page }) {
           Categories
         </Typography>
 
-        {page === "home" ? (
+        {page === "home" && (
           <Button
             variant="outlined"
             color="disabled"
@@ -88,10 +53,6 @@ export default function CategoriesList({ page }) {
           >
             All Categories
           </Button>
-        ) : (
-          <Stack>
-            <Breadcrumbs separator={<Separator />}>{breadcrumbs}</Breadcrumbs>
-          </Stack>
         )}
       </Box>
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "32px" }}>

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import "./App.css";
 import { Footer, Navbar } from "./components";
-import { Home, Categories, Category } from "./pages";
+import { Home, Categories, Category, Product, Sales } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import Products from "./pages/products";
 import { useDispatch } from "react-redux";
@@ -32,6 +32,8 @@ function App() {
         <Route path="/categories" element={<Categories />} />
         <Route path="/categories/:id" element={<Category />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Product />} />
+        <Route path="/sales" element={<Sales />} />
       </Routes>
       <Footer />
     </Box>

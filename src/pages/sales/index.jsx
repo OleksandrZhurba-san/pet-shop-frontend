@@ -1,8 +1,8 @@
-import { Breadcrumbs, Stack, Typography } from "@mui/material";
-import { CategoriesList, Separator } from "../../components";
+import { Box, Breadcrumbs, Stack, Typography } from "@mui/material";
+import { ProductsList, Separator } from "../../components";
 import { useNavigate } from "react-router-dom";
 
-export default function Categories() {
+export default function Sales() {
   const navigate = useNavigate();
   const navLinkStyle = {
     padding: "8px 16px",
@@ -32,13 +32,15 @@ export default function Categories() {
     </Typography>,
 
     <Typography sx={navLinkStyleActive} key="2">
-      Categories
+      All products
     </Typography>,
   ];
   return (
-    <Stack>
-      <Breadcrumbs separator={<Separator />}>{breadcrumbs}</Breadcrumbs>
-      <CategoriesList page="categories"></CategoriesList>;
-    </Stack>
+    <Box>
+      <Stack>
+        <Breadcrumbs separator={<Separator />}>{breadcrumbs}</Breadcrumbs>
+      </Stack>
+      <ProductsList page="sales" />
+    </Box>
   );
 }
