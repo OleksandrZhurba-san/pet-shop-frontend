@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { getAllCategories } from "../../redux/slices/categoriesSlice";
 import CategoryCard from "../categoryCard";
 import { Box, Typography, Button, Stack, Breadcrumbs } from "@mui/material";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Separator from "../separator";
 
 export default function CategoriesList({ page }) {
-  const dispatch = useDispatch();
   const {
     data: categories,
     isLoading,
@@ -48,10 +47,6 @@ export default function CategoriesList({ page }) {
     </Typography>,
   ];
 
-  useEffect(() => {
-    dispatch(getAllCategories());
-  }, [dispatch]);
-
   if (isLoading) {
     return <>Loading..</>;
   }
@@ -89,7 +84,7 @@ export default function CategoriesList({ page }) {
               color: "#8B8B8B",
               maxHeight: "36px",
             }}
-            onClick={() => console.log("All Categories Clicked")}
+            onClick={() => navigate("/categories")}
           >
             All Categories
           </Button>
