@@ -17,7 +17,6 @@ export default function ProductFilters({ onFiltersChange }) {
   const [sortOrder, setSortOrder] = useState("default");
 
   const handlePriceFromChange = (e) => {
-    console.log(e.target.value);
     setPriceFrom(e.target.value);
     onFiltersChange({
       priceFrom: e.target.value,
@@ -28,8 +27,6 @@ export default function ProductFilters({ onFiltersChange }) {
   };
 
   const handlePriceToChange = (e) => {
-    console.log(e.target.value);
-
     setPriceTo(e.target.value);
     onFiltersChange({
       priceFrom,
@@ -40,7 +37,6 @@ export default function ProductFilters({ onFiltersChange }) {
   };
 
   const handleDiscountedChange = (e) => {
-    console.log(e.target.checked);
     setIsDiscounted(e.target.checked);
     onFiltersChange({
       priceFrom,
@@ -51,7 +47,6 @@ export default function ProductFilters({ onFiltersChange }) {
   };
 
   const handleSortChange = (e) => {
-    console.log(e.target.value);
     setSortOrder(e.target.value);
     onFiltersChange({
       priceFrom,

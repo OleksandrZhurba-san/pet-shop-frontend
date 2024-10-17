@@ -56,9 +56,8 @@ export default function ProductsList({ id, page }) {
         const applicablePrice = product.discont_price
           ? product.discont_price
           : product.price;
-        applicablePrice <= filterData.priceTo;
+        return applicablePrice <= filterData.priceTo;
       });
-      console.log(typeof applicablePrice, typeof filterData.priceTo);
     }
     if (filterData.isDiscounted) {
       products = products.filter((product) => product.discont_price);
@@ -70,9 +69,17 @@ export default function ProductsList({ id, page }) {
     } else if (filterData.sortOrder === "za") {
       products.sort((a, b) => b.title.localeCompare(a.title));
     } else if (filterData.sortOrder === "priceAsc") {
-      products.sort((a, b) => a.price - b.price);
+      products.sort((a, b) => {
+        const priceA = a.discont_price ?? a.price;
+        const priceB = b.discont_price ?? b.price;
+        return priceA - priceB;
+      });
     } else if (filterData.sortOrder === "priceDesc") {
-      products.sort((a, b) => b.price - a.price);
+      products.sort((a, b) => {
+        const priceA = a.discont_price ?? a.price;
+        const priceB = b.discont_price ?? b.price;
+        return priceB - priceA;
+      });
     }
 
     return (
