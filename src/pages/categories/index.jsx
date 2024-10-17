@@ -1,5 +1,5 @@
-import { Breadcrumbs, Stack, Typography } from "@mui/material";
-import { BreadCrumbs, CategoriesList, Separator } from "../../components";
+import { Stack, Typography } from "@mui/material";
+import { BreadCrumbs, CategoriesList} from "../../components";
 import { useNavigate } from "react-router-dom";
 
 export default function Categories() {

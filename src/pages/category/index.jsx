@@ -26,7 +26,7 @@ export default function Category() {
       <Stack>
         <BreadCrumbs breadcrumbs={breadcrumbs} />
       </Stack>
-      <ProductsList page={categoryName} id={id} />
+      <ProductsList page="categories" id={id} />
     </Box>
   );
 }

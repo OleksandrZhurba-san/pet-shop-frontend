@@ -2,8 +2,20 @@ import { AppBar, Badge, Box, Button, IconButton, Toolbar } from "@mui/material";
 import LogoIcon from "../icons/LogoIcon";
 import CartIcon from "../icons/CartIcon";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
+  const shoppingCartData = useSelector((state) => state.cart);
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    const totalQuantity = shoppingCartData.data.reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+    setQuantity(totalQuantity);
+  }, [shoppingCartData.data]);
   const appBarStyle = {
     bgcolor: "white",
     height: 128,
@@ -42,7 +54,7 @@ export default function Navbar() {
     <AppBar position="static" sx={appBarStyle}>
       <Toolbar sx={toolBarStyle}>
         <IconButton edge="start" color="inherit">
-          <NavLink>
+          <NavLink to="/">
             <LogoIcon />
           </NavLink>
         </IconButton>
@@ -66,7 +78,7 @@ export default function Navbar() {
           <Badge
             color="primary"
             overlap="circular"
-            badgeContent="12"
+            badgeContent={quantity}
             anchorOrigin={{
               vertical: "top",
               horizontal: "left",
