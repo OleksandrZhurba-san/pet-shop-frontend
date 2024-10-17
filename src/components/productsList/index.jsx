@@ -100,7 +100,7 @@ export default function ProductsList({ id, page }) {
           {title}
         </Typography>
         {page !== "home" && (
-          <ProductFilters onFiltersChange={handleFilterChange} />
+          <ProductFilters page={page} onFiltersChange={handleFilterChange} />
         )}
         <Box sx={{ padding: "20px" }}>
           <Box sx={{ display: "flex", flexWrap: "wrap", gap: "32px" }}>

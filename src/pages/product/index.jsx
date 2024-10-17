@@ -181,7 +181,7 @@ export default function Product() {
               }}
             >
               <Typography sx={{ fontSize: "64px", fontWeight: "600" }}>
-                ${price}
+                ${discont_price ? discont_price : price}
               </Typography>
 
               {discont_price && (
@@ -194,7 +194,7 @@ export default function Product() {
                       textDecoration: "line-through",
                     }}
                   >
-                    ${discont_price}
+                    ${price}
                   </Typography>
                   <Badge
                     color="primary"

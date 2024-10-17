@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-export default function ProductFilters({ onFiltersChange }) {
+export default function ProductFilters({ page, onFiltersChange }) {
   const [priceFrom, setPriceFrom] = useState("");
   const [priceTo, setPriceTo] = useState("");
   const [isDiscounted, setIsDiscounted] = useState(false);
@@ -73,7 +73,7 @@ export default function ProductFilters({ onFiltersChange }) {
       },
     },
     "& input::placeholder": {
-      color: "#dddddd",
+      color: "black",
     },
   };
   const boxStyle = {
@@ -125,22 +125,24 @@ export default function ProductFilters({ onFiltersChange }) {
       </Box>
 
       {/* Discounted Items Checkbox */}
-      <FormControlLabel
-        label="Discounted Items"
-        labelPlacement="start"
-        sx={{ fontSize: "20px", display: "flex", gap: "16px" }}
-        control={
-          <Checkbox
-            checked={isDiscounted}
-            onChange={handleDiscountedChange}
-            color="primary"
-            sx={{ "& .MuiSvgIcon-root": { fontSize: "36px" } }}
-          />
-        }
-        slotProps={{
-          typography: { sx: labelStyle },
-        }}
-      />
+      {page !== "sales" && (
+        <FormControlLabel
+          label="Discounted Items"
+          labelPlacement="start"
+          sx={{ fontSize: "20px", display: "flex", gap: "16px" }}
+          control={
+            <Checkbox
+              checked={isDiscounted}
+              onChange={handleDiscountedChange}
+              color="primary"
+              sx={{ "& .MuiSvgIcon-root": { fontSize: "36px" } }}
+            />
+          }
+          slotProps={{
+            typography: { sx: labelStyle },
+          }}
+        />
+      )}
 
       {/* Sort Options */}
       <Box sx={boxStyle}>
