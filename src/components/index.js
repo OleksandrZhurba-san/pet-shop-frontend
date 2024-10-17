@@ -7,6 +7,7 @@ import ProductsList from "./productsList";
 import Separator from "./separator";
 import Banner from "./banner";
 import BreadCrumbs from "./breadcrumbs";
+import ProductFilters from "./filter";
 
 export {
   BreadCrumbs,
@@ -18,4 +19,5 @@ export {
   Footer,
   InstaIcon,
   ProductsList,
+  ProductFilters,
 };

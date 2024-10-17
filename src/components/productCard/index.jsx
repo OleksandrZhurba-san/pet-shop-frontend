@@ -9,18 +9,18 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../redux/slices/shoppingCartSlice";
 const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-export default function ProductCard({
-  id,
-  title,
-  price,
-  discont_price,
-  image,
-}) {
+export default function ProductCard({ product }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [hovered, setHovered] = useState(false);
+  const [added, setAdded] = useState(false);
+  const [hoveredButton, setButtonHovered] = useState(false);
+  const { id, title, price, discont_price, image } = product;
   const hoveredButtonBoxStyle = {
     position: "absolute",
     top: "60%",
@@ -32,24 +32,34 @@ export default function ProductCard({
   };
   const buttonStyle = {
     backgroundColor: "#0D50FF",
-    color: "white",
+    color: added ? "black" : "white",
     width: "284px",
     height: "58px",
     fontSize: "20px",
     "&:hover": {
-      backgroundColor: "black",
+      backgroundColor: added ? "white" : "black",
     },
   };
   const badgeStyle = {
     "& .MuiBadge-badge": {
       fontSize: "20px",
       backgroundColor: "#0D50FF",
-      padding: "4px 8px",
+      padding: "16px 8px",
       borderRadius: "6px",
       top: 28,
       right: 38,
     },
   };
+  function handleButtonClick(e) {
+    e.stopPropagation();
+    setAdded(true);
+    const quantity = 1;
+    dispatch(addToCart({ product, quantity }));
+  }
+  function handleMouseLeave() {
+    setButtonHovered(false);
+    setAdded(false);
+  }
 
   return (
     <Card
@@ -100,7 +110,7 @@ export default function ProductCard({
             }}
           >
             <Typography sx={{ fontSize: "40px", fontWeight: "600" }}>
-              ${price}
+              ${discont_price ? discont_price : price}
             </Typography>
             {discont_price && (
               <Typography
@@ -111,15 +121,21 @@ export default function ProductCard({
                   textDecoration: "line-through",
                 }}
               >
-                ${discont_price}
+                ${price}
               </Typography>
             )}
           </Box>
         </CardContent>
       </CardActionArea>
       <Box sx={hoveredButtonBoxStyle}>
-        <Button variant="contained" sx={buttonStyle}>
-          Add to cart
+        <Button
+          variant={`${added} && ${hoveredButton} ? "outlined" : "contained"`}
+          onClick={handleButtonClick}
+          sx={buttonStyle}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={handleMouseLeave} // Reset on mouse leave
+        >
+          {added ? "Added" : "Add to cart"}
         </Button>
       </Box>
     </Card>

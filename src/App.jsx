@@ -18,6 +18,7 @@ function App() {
   }, [dispatch]);
   const mainBoxStyle = {
     maxWidth: 1440,
+    padding: "10px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
