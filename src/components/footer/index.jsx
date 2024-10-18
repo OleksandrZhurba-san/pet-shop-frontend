@@ -93,7 +93,7 @@ export default function Footer() {
           width: "100%",
         }}
       >
-        {/* <GoogleMap /> */}
+        <GoogleMap />
       </Box>
     </Box>
   );
