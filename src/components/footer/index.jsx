@@ -15,7 +15,7 @@ export default function Footer() {
     gap: "16px",
     textAlign: "start",
     boxShadow: "none",
-    height: "150px",
+    maxHeight: "194px",
   }));
   const cellHeaderStyle = {
     color: "#8b8b8b",

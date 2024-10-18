@@ -152,6 +152,7 @@ export default function ProductFilters({ page, onFiltersChange }) {
         <FormControl sx={selectStyle}>
           <Select value={sortOrder} onChange={handleSortChange}>
             <MenuItem value="default">by default</MenuItem>
+            <MenuItem value="newest">newest</MenuItem>
             <MenuItem value="az">A-Z</MenuItem>
             <MenuItem value="za">Z-A</MenuItem>
             <MenuItem value="priceAsc">price: low-high</MenuItem>

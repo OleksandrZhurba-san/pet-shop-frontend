@@ -12,17 +12,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BreadCrumbs } from "../../components/index.js";
 import { Add, Remove } from "@mui/icons-material";
 import { useState } from "react";
-import {
-  addItem,
-  addToCart,
-  removeItem,
-} from "../../redux/slices/shoppingCartSlice.js";
+import { addToCart } from "../../redux/slices/shoppingCartSlice.js";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function Product() {
   const dispatch = useDispatch();
-  const shoppingCartData = useSelector((state) => state.cart);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -43,15 +38,8 @@ export default function Product() {
   if (isError) return <Typography>Error: {message}</Typography>;
   if (isSuccess) {
     const product = products.find((product) => product.id === Number(id));
-    const {
-      id: productId,
-      title,
-      price,
-      discont_price,
-      image,
-      description,
-      categoryId,
-    } = product;
+    const { title, price, discont_price, image, description, categoryId } =
+      product;
     const category = categories.find((category) => category.id === +categoryId);
 
     const breadcrumbs = [

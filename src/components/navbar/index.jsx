@@ -1,4 +1,4 @@
-import { AppBar, Badge, Box, Button, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Badge, Box, IconButton, Toolbar } from "@mui/material";
 import LogoIcon from "../icons/LogoIcon";
 import CartIcon from "../icons/CartIcon";
 import { NavLink } from "react-router-dom";
@@ -16,12 +16,14 @@ export default function Navbar() {
     );
     setQuantity(totalQuantity);
   }, [shoppingCartData.data]);
+
   const appBarStyle = {
     bgcolor: "white",
     height: 128,
     justifyContent: "center",
     marginBottom: "40px",
   };
+
   const toolBarStyle = {
     maxWidth: 1400,
     width: "100%",
@@ -32,14 +34,21 @@ export default function Navbar() {
 
   const navbarButtonsBoxStyle = {
     display: "flex",
-    gap: "4",
+    gap: "32px",
   };
+
   const navbarButtonsStyle = {
     fontSize: "20px",
     fontWeight: "500",
     color: "black",
     textTransform: "none",
+    textDecoration: "none",
   };
+
+  const activeStyle = {
+    color: "blue",
+  };
+
   const badgeStyle = {
     "& .MuiBadge-badge": {
       backgroundColor: "#0D50FF",
@@ -50,6 +59,7 @@ export default function Navbar() {
       borderRadius: "50%",
     },
   };
+
   return (
     <AppBar position="static" sx={appBarStyle}>
       <Toolbar sx={toolBarStyle}>
@@ -60,17 +70,48 @@ export default function Navbar() {
         </IconButton>
 
         <Box sx={navbarButtonsBoxStyle}>
-          <NavLink to="/">
-            <Button sx={navbarButtonsStyle}>Main Page</Button>
+          <NavLink
+            to="/"
+            style={({ isActive }) =>
+              isActive
+                ? { ...navbarButtonsStyle, ...activeStyle }
+                : navbarButtonsStyle
+            }
+          >
+            Main Page
           </NavLink>
-          <NavLink to="/categories">
-            <Button sx={navbarButtonsStyle}>Categories</Button>
+
+          <NavLink
+            to="/categories"
+            style={({ isActive }) =>
+              isActive
+                ? { ...navbarButtonsStyle, ...activeStyle }
+                : navbarButtonsStyle
+            }
+          >
+            Categories
           </NavLink>
-          <NavLink to="/products">
-            <Button sx={navbarButtonsStyle}>All products</Button>
+
+          <NavLink
+            to="/products"
+            style={({ isActive }) =>
+              isActive
+                ? { ...navbarButtonsStyle, ...activeStyle }
+                : navbarButtonsStyle
+            }
+          >
+            All products
           </NavLink>
-          <NavLink to="/sales">
-            <Button sx={navbarButtonsStyle}>All sales</Button>
+
+          <NavLink
+            to="/sales"
+            style={({ isActive }) =>
+              isActive
+                ? { ...navbarButtonsStyle, ...activeStyle }
+                : navbarButtonsStyle
+            }
+          >
+            All sales
           </NavLink>
         </Box>
 
@@ -85,7 +126,7 @@ export default function Navbar() {
             }}
             sx={badgeStyle}
           >
-            <NavLink>
+            <NavLink to="/cart">
               <CartIcon />
             </NavLink>
           </Badge>

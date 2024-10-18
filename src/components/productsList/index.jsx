@@ -80,6 +80,8 @@ export default function ProductsList({ id, page }) {
         const priceB = b.discont_price ?? b.price;
         return priceB - priceA;
       });
+    } else if (filterData.sortOrder === "newest") {
+      products.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     }
 
     return (

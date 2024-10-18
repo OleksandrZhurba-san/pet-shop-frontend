@@ -8,8 +8,10 @@ import Separator from "./separator";
 import Banner from "./banner";
 import BreadCrumbs from "./breadcrumbs";
 import ProductFilters from "./filter";
+import ShoppingCartItem from "./shoppingCartItem";
 
 export {
+  ShoppingCartItem,
   BreadCrumbs,
   Banner,
   Separator,

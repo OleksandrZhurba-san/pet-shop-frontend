@@ -1,6 +1,9 @@
 import { Box, Typography, TextField, Button } from "@mui/material";
 import pets from "../../assets/discount_pets.png";
 import { useState } from "react";
+import axios from "axios";
+
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
 export default function DiscountForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +19,17 @@ export default function DiscountForm() {
       [name]: value,
     });
   };
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(baseUrl + "/sale/send", formData);
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error sending form data:", error);
+    }
+  }
+
   const containerBoxStyle = {
     backgroundColor: "#0D50FF",
     display: "flex",
@@ -66,7 +80,7 @@ export default function DiscountForm() {
       <Box sx={{ display: "flex", gap: "64px" }}>
         <Box sx={imageBoxStyle}></Box>
         <Box sx={{ flex: 1 }}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextField
               fullWidth
               label="Name"
