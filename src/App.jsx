@@ -18,6 +18,7 @@ import { getAllProducts } from "./redux/slices/productsSlice";
 
 
 //TODO: test
+//TODO: new test
 function App() {
   const dispatch = useDispatch();
 
