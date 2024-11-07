@@ -16,6 +16,8 @@ import { useEffect } from "react";
 import { getAllCategories } from "./redux/slices/categoriesSlice";
 import { getAllProducts } from "./redux/slices/productsSlice";
 
+
+//TODO: test
 function App() {
   const dispatch = useDispatch();
 
