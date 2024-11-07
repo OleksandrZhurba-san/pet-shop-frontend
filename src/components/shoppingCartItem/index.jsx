@@ -79,7 +79,7 @@ export default function ShoppingCartItem({ item }) {
                 textDecoration: "line-through",
               }}
             >
-              ${price}
+              ${price * quantity}
             </Typography>
           )}
         </Box>
